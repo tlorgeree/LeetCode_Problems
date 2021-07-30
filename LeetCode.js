@@ -50,7 +50,7 @@ Given a roman numeral, convert it to an integer.*/
     for(var i = 0; i < s.length; ++i)
     {
         find = sym.indexOf(s[i]);
-        find_next = sym.indexOf(s[i+1])
+        find_next = sym.indexOf(s[i+1]);
         if (!(find < find_next))
         {
             output += val[find];
@@ -82,8 +82,7 @@ Given a roman numeral, convert it to an integer.*/
                 default: output++;
                     break;
             }
-            
         }
     }
-    return output
+    return output;
 };
