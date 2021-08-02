@@ -86,3 +86,117 @@ Given a roman numeral, convert it to an integer.*/
     }
     return output;
 };
+
+/*Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".*/
+
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+ var longestCommonPrefix = function(strs) {
+    current_i = "";
+    current_j = "";
+    current_j_last = "";
+    output = "";
+    if (strs.length == 1) return strs[0];
+    for (var i = 0; i < strs.length; ++i)
+        {
+            
+            for (var j = 0; j < strs.length; ++j)
+                {
+                    if (strs[j] == "") return "";
+                    var max = Math.min(strs[i].length, strs[j].length);
+                    if (!(i == j))
+                    {
+                        for (var k = 0; k < max; k++)
+                            {
+
+                                if (strs[i][k] == strs[j][k]) current_j += strs[i][k];
+                                else
+                                    {
+                                        if (k == 0) return "";
+                                        else 
+                                            {
+                                                if (k == 0) return "";
+                                                else break;
+                                            }
+                                    }
+
+                                
+                                
+                            }
+                        if (current_j_last == "") current_j_last = current_j;
+                        else 
+                            {
+                                if ((current_j.length < current_j_last.length) && (current_j != "")) current_j_last = current_j;
+                            }
+
+                        current_j = "";
+                    }
+                }
+            if (current_j_last.length > current_i.length) current_i = current_j_last;
+        }
+    return current_i;
+};
+
+/*Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.*/
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+ var isValid = function(s) {
+    parenthesis = 0;
+    bracket = 0;
+    curley = 0;
+    arr = [];
+    let l = s.length
+    for (let i = 0; i < l; i++)
+        {
+            switch (s[i])
+                {
+                    case "(": parenthesis++;
+                        arr.push("po");
+                        break;
+                    case ")":
+                        if (arr[arr.length-1] == "po") 
+                        {
+                            parenthesis--;
+                            arr.splice(arr.length-1);
+                        }
+                        else return false;
+                        break;
+                    case "[": bracket++;
+                        arr.push("bo");
+                        break;
+                    case "]": 
+                        if (arr[arr.length-1] == "bo") 
+                        {
+                            bracket--;
+                            arr.splice(arr.length-1);
+                        }
+                        else return false;
+                        break;
+                    case "{": curley++;
+                        arr.push("co")
+                        break;
+                    case "}":
+                        if (arr[arr.length-1] == "co") 
+                        {
+                            curley--;
+                            arr.splice(arr.length-1);
+                        }
+                        else return false;
+                        break;
+                    
+                }
+            
+                
+        }
+    if ((parenthesis ==0) && (bracket == 0) && (curley == 0)) return true;
+    else return false;
+};
