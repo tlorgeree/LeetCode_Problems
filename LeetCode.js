@@ -200,3 +200,55 @@ Open brackets must be closed in the correct order.*/
     if ((parenthesis ==0) && (bracket == 0) && (curley == 0)) return true;
     else return false;
 };
+/* WEEKLY CHALLENGE INCOMPLETED Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.*/
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+ var subsetsWithDup = function(nums) {
+    let output = new Array();
+    output.push([]);
+    nums.sort();
+    let ref = new Array([]);
+    n = 0;
+    let max = nums.length;
+    while (n < max)
+        {
+            for (let i = 0; i < max; ++i)
+                {        
+                    let sub_output = new Array();
+                    let sub_ref = "";
+                    let j = i;
+                    while (j < max)
+                        {
+                            if ((j<=i)||(j>i+n)) 
+                                {
+                                    sub_output.push(nums[j]);
+                                    let n_sub_output = []
+                                    for (let k = 0; k < sub_output.length; ++k) //need to clone array or nothing works right
+                                        {
+                                            n_sub_output.push(sub_output[k]);
+                                        }
+                                    console.log(n_sub_output)
+                                    sub_ref += nums[j].toString();
+                                    if ((ref.indexOf(sub_ref)<0) )
+                                    {
+                                        ref.push(sub_ref);                      
+                                        output.push(n_sub_output); 
+                                    }
+
+
+
+
+                                }
+                            j++;
+
+                        }     
+                }
+            n++;
+        }
+    
+    return output;
+};
