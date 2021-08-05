@@ -197,7 +197,7 @@ Open brackets must be closed in the correct order.*/
             
                 
         }
-    if ((parenthesis ==0) && (bracket == 0) && (curley == 0)) return true;
+    if ((parenthesis == 0) && (bracket == 0) && (curley == 0)) return true;
     else return false;
 };
 /* WEEKLY CHALLENGE INCOMPLETED Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
