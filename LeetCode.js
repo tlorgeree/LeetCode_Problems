@@ -335,3 +335,54 @@ is an empty string. This is consistent to C's strstr() and Java's indexOf().*/
  var strStr = function(haystack, needle) {
     return haystack.indexOf(needle); //"Hey, I've seen this befrore"
 };
+//same problem but without cheating and using indexOF()
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+ var strStr = function(haystack, needle) {
+    if ((needle.length === 0) || (needle == haystack)) return 0;
+    if ((haystack.length === 0) ||(needle.length > haystack.length)) return -1;
+    
+    
+    count = 0;
+    for (let n = 0; n < needle.length; n++)
+        {
+            if (haystack.includes(needle[n])) count++;
+        }
+    if (count < needle.length) return -1;
+    else
+        {
+            found = 0 ;
+            start = false;
+            for(let i = 0; i < haystack.length; ++i)
+                {
+                    if (start == true)
+                    {
+                        if (haystack[i] == needle[0+found])
+                        {
+                            found++;
+                            if (found == count) return i +1 - found;
+                        }
+                        else 
+                        {
+                            i -= found - 1;
+                            found = 0;
+                            start = false;
+                        }
+                    }
+                    if ((haystack[i] == needle[0]) && (start == false))
+                    {
+                        found++;
+                        start = true;
+                        console.log("started: " + i);
+                        if (needle.length == 1) return i;
+                    }
+                    
+                    
+                }
+        }
+    return -1;
+    
+};
