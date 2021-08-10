@@ -416,3 +416,36 @@ You must write an algorithm with O(log n) runtime complexity.*/
         }
     return l;
 };
+
+/*Given an integer array nums, find the contiguous subarray 
+(containing at least one number) which has the largest sum and return its sum.
+A subarray is a contiguous part of an array.*/
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var maxSubArray = function(nums) {//bad solution O(n^2)
+    let max = nums.length;
+    let last_highest = new Array();
+    let curr_highest = new Array();
+    let output = 0;
+    let sum = 0;
+    for (let i = 0; i < max; i++)
+        {
+            for(let j = i; j < max; j++)
+                {
+                    sum += nums[j];
+                    curr_highest.push(sum);
+                }
+            if ((Math.max.apply(Math,curr_highest)) > (Math.max.apply(Math,last_highest)))
+                {
+                    last_highest = curr_highest;
+                    
+                }
+            curr_highest = [];
+            sum = 0;
+        }
+    output = Math.max.apply(Math, last_highest);
+    return output;
+    
+};
