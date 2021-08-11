@@ -449,3 +449,24 @@ A subarray is a contiguous part of an array.*/
     return output;
     
 };
+
+/*Given a string s consisting of some words separated by some 
+number of spaces, return the length of the last word in the string.
+A word is a maximal substring consisting of non-space characters only.*/
+/**
+ * @param {string} s
+ * @return {number}
+ */
+ var lengthOfLastWord = function(s) {
+    const s_arr = s.split(" ");
+    
+    let max = s_arr.length;
+    let n = 0;
+    while((s_arr[s_arr.length - (1 + n)]) == '')
+        {
+            n++
+            console.log(s_arr[s_arr.length - (1 + n)]);
+        }
+    
+    return s_arr[s_arr.length - (1 + n)].length;
+};
