@@ -458,15 +458,6 @@ A word is a maximal substring consisting of non-space characters only.*/
  * @return {number}
  */
  var lengthOfLastWord = function(s) {
-    const s_arr = s.split(" ");
-    
-    let max = s_arr.length;
-    let n = 0;
-    while((s_arr[s_arr.length - (1 + n)]) == '')
-        {
-            n++
-            console.log(s_arr[s_arr.length - (1 + n)]);
-        }
-    
-    return s_arr[s_arr.length - (1 + n)].length;
+    const s_arr = s.trim().split(" ");
+    return s_arr[s_arr.length-1].length;
 };
