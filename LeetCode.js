@@ -508,3 +508,21 @@ and only the integer part of the result is returned.*/
         }
     return (i - 1);  
 };
+//Binary Search Application
+var mySqrt = function(x) {
+    let lo = 0, hi = x, mid;
+    while (lo <= hi){
+        console.log(lo);
+        console.log(hi);
+        mid = Math.floor((hi + lo)/2);
+        if(mid * mid === x){
+            return mid;
+        }
+        if(mid * mid > x){
+            hi = mid - 1;
+        } else {
+            lo = mid + 1;
+        }
+    }
+        return hi;
+ };
